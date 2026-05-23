@@ -19,11 +19,23 @@ async function buscarReceita() {
 
   try {
     const resposta = await fetch(api);
-    if (!resposta.ok) {
+
+    console.log("Status:", resposta.status); // <-- mostra o status sempre
+
+    if (!resposta.ok) { // <-- volte para .ok
       throw new Error(`Erro na requisição: ${resposta.status}`);
     }
 
     const dados = await resposta.json();
+
+    if (ehTexto && dados.recipes.length === 0) {
+      document.getElementById("nomeReceita").innerText = "Receita não encontrada";
+      document.getElementById("imageReceita").src = "./images/vovo_confusa.png";
+      document.getElementById("localReceita").innerHTML = "Local Inexistente";
+      document.getElementById("dificuldadeReceita").innerHTML = "Sem Dificuldade, você consegue KKKK";
+      document.getElementById("classificacaoReceita").innerHTML = "10 de 10, o melhor que tem";
+      return;
+    }
 
     let receita;
     if (ehTexto) {
@@ -37,21 +49,17 @@ async function buscarReceita() {
     console.table(receita);
     document.getElementById("nomeReceita").innerText = receita.name;
     document.getElementById("localReceita").innerHTML = receita.cuisine;
-    document.getElementById("dificuldadeReceita").innerHTML =
-      receita.difficulty;
+    document.getElementById("dificuldadeReceita").innerHTML = receita.difficulty;
     document.getElementById("classificacaoReceita").innerHTML = receita.rating;
     document.getElementById("imageReceita").src = receita.image;
 
-    // CASO VENHA A DAR ERRO DE NÃO!!!
   } catch (error) {
-    document.getElementById("nomeReceita").innerText = "Receita não encontrada";
-    document.getElementById("imageReceita").src = "./images/vovo_confusa.png";
-    document.getElementById("localReceita").innerHTML = "Local Inexistente";
-    document.getElementById("dificuldadeReceita").innerHTML =
-      "Sem Dificuldade, você consegue KKKK";
-    document.getElementById("classificacaoReceita").innerHTML =
-      "10 de 10, o melhor que tem";
     console.error("Erro:", error.message);
+    document.getElementById("nomeReceita").innerText = "Eita! parece que a Vózinha acabou dormindo e não conseguiu encontrar a receita :(";
+      document.getElementById("imageReceita").src = "./images/vovo_dormindo.png";
+      document.getElementById("localReceita").innerHTML = "Dormindo...";
+      document.getElementById("dificuldadeReceita").innerHTML = "Acho que no momento vai ser dificil";
+      document.getElementById("classificacaoReceita").innerHTML = "ZZZ...";
   }
 }
 
