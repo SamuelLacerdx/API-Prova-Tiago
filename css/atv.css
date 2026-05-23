@@ -1,0 +1,134 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", Courier, monospace;
+  background-image: url(../images/background.png);
+  background-size: cover;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: ivory;
+  padding: 20px;
+}
+
+header > h1 {
+  margin: 10px 30px;
+  padding: 0px 150px;
+}
+
+.busca {
+  margin: 10px 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.busca > input {
+  padding: 5px 10px;
+  border: none;
+  border-bottom: 2px solid #555;
+  color: black;
+  text-align: center;
+  background-color: transparent;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.busca > button {
+  background-color: transparent;
+  border: 1px solid #555;
+  padding: 8px 18px;
+  font-size: medium;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s;
+}
+
+.busca > button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.titulo > h2 {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main > img {
+  width: 30dvw;
+  height: 60dvh;
+  margin: 20px 30px;
+  background-color: gray;
+  object-fit: cover;
+  border: solid rgb(255, 255, 255) 3px;
+  border-radius: 3px;
+  box-shadow: -5px 5px 34px 28px #00000075;
+}
+
+section {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#container > div {
+  display: flex;
+  gap: 20px;
+}
+
+#container > div > p {
+  background-color: rgba(255, 255, 255, 0.45);
+  border-left: 3px solid #555;
+  margin: 0px 30px;
+  padding: 10px 20px;
+  width: 40ch;
+}
+
+#btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  justify-content: flex-start;
+}
+
+#btn > button {
+  margin-top: 10px;
+  border: 1px solid #555;
+  padding: 8px 22px;
+  font-size: medium;
+  font-family: "Courier New", Courier, monospace;
+  background-color: transparent;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s;
+}
+
+#btn > button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
