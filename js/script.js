@@ -20,14 +20,14 @@ async function buscarReceita() {
   try {
     const resposta = await fetch(api);
 
-    console.log("Status:", resposta.status); // <-- mostra o status sempre
+    console.log("Status:", resposta.status); 
 
-    if (!resposta.ok) { // <-- volte para .ok
+    if (!resposta.ok) { 
       throw new Error(`Erro na requisição: ${resposta.status}`);
     }
 
     const dados = await resposta.json();
-
+    //ERRO 404
     if (ehTexto && dados.recipes.length === 0) {
       document.getElementById("nomeReceita").innerText = "Receita não encontrada";
       document.getElementById("imageReceita").src = "./images/vovo_confusa.png";
@@ -45,7 +45,7 @@ async function buscarReceita() {
     }
 
     idAtual = receita.id;
-
+    //DEU CERTO, MOSTRA A RECEITA
     console.table(receita);
     document.getElementById("nomeReceita").innerText = receita.name;
     document.getElementById("localReceita").innerHTML = receita.cuisine;
@@ -53,6 +53,7 @@ async function buscarReceita() {
     document.getElementById("classificacaoReceita").innerHTML = receita.rating;
     document.getElementById("imageReceita").src = receita.image;
 
+    //ERRO 500
   } catch (error) {
     console.error("Erro:", error.message);
     document.getElementById("nomeReceita").innerText = "Eita! parece que a Vózinha acabou dormindo e não conseguiu encontrar a receita :(";
