@@ -1,5 +1,5 @@
 // ID Atual que o usuario está
-let idAtual = 1;
+let idAtual = 0;
 
 async function buscarReceita() {
   const idDigitado = document
