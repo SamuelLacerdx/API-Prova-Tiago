@@ -5,7 +5,7 @@ async function buscarReceita() {
   const idDigitado = document
     .getElementById("idReceita")
     .value.trim()
-    .replace(/\s+/g, "");
+    .replace(/\s+/g, " ");
 
   // Verifica se oq foi
   const ehTexto = isNaN(idDigitado);
