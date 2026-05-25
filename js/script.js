@@ -1,5 +1,5 @@
 // ID Atual que o usuario está
-let idAtual = 0;
+let idAtual = 1;
 
 async function buscarReceita() {
   const idDigitado = document
@@ -20,20 +20,23 @@ async function buscarReceita() {
   try {
     const resposta = await fetch(api);
 
-    console.log("Status:", resposta.status); 
+    console.log("Status:", resposta.status);
 
-    if (!resposta.ok) { 
+    if (!resposta.ok) {
       throw new Error(`Erro na requisição: ${resposta.status}`);
     }
 
     const dados = await resposta.json();
     //ERRO 404
     if (ehTexto && dados.recipes.length === 0) {
-      document.getElementById("nomeReceita").innerText = "Receita não encontrada";
+      document.getElementById("nomeReceita").innerText =
+        "Receita não encontrada";
       document.getElementById("imageReceita").src = "./images/vovo_confusa.png";
       document.getElementById("localReceita").innerHTML = "Local Inexistente";
-      document.getElementById("dificuldadeReceita").innerHTML = "Sem Dificuldade, você consegue KKKK";
-      document.getElementById("classificacaoReceita").innerHTML = "10 de 10, o melhor que tem";
+      document.getElementById("dificuldadeReceita").innerHTML =
+        "Sem Dificuldade, você consegue KKKK";
+      document.getElementById("classificacaoReceita").innerHTML =
+        "10 de 10, o melhor que tem";
       return;
     }
 
@@ -49,31 +52,38 @@ async function buscarReceita() {
     console.table(receita);
     document.getElementById("nomeReceita").innerText = receita.name;
     document.getElementById("localReceita").innerHTML = receita.cuisine;
-    document.getElementById("dificuldadeReceita").innerHTML = receita.difficulty;
+    document.getElementById("dificuldadeReceita").innerHTML =
+      receita.difficulty;
     document.getElementById("classificacaoReceita").innerHTML = receita.rating;
     document.getElementById("imageReceita").src = receita.image;
 
     //ERRO 500
   } catch (error) {
     console.error("Erro:", error.message);
-    document.getElementById("nomeReceita").innerText = "Eita! parece que a Vózinha acabou dormindo e não conseguiu encontrar a receita :(";
-      document.getElementById("imageReceita").src = "./images/vovo_dormindo.png";
-      document.getElementById("localReceita").innerHTML = "Dormindo...";
-      document.getElementById("dificuldadeReceita").innerHTML = "Acho que no momento vai ser dificil";
-      document.getElementById("classificacaoReceita").innerHTML = "ZZZ...";
+    document.getElementById("nomeReceita").innerText =
+      "Eita! parece que a Vózinha acabou dormindo e não conseguiu encontrar a receita :(";
+    document.getElementById("imageReceita").src = "./images/vovo_dormindo.png";
+    document.getElementById("localReceita").innerHTML = "Dormindo...";
+    document.getElementById("dificuldadeReceita").innerHTML =
+      "Acho que no momento vai ser dificil";
+    document.getElementById("classificacaoReceita").innerHTML = "ZZZ...";
   }
 }
 
 function proximo() {
-  if (idAtual < 50) {
+  if (idAtual === 50) {
+    document.getElementById("idReceita").value = 1;
+  } else {
     document.getElementById("idReceita").value = idAtual + 1;
-    buscarReceita();
   }
+  buscarReceita();
 }
 
 function anterior() {
-  if (idAtual > 1) {
+  if (idAtual <= 1) {
+    document.getElementById("idReceita").value = 50;
+  } else {
     document.getElementById("idReceita").value = idAtual - 1;
-    buscarReceita();
   }
+  buscarReceita();
 }
