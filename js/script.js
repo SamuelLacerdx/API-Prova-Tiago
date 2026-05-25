@@ -30,7 +30,7 @@ async function buscarReceita() {
     //ERRO 404
     if (ehTexto && dados.recipes.length === 0) {
       document.getElementById("nomeReceita").innerText =
-        "Receita não encontrada";
+        "Receita não encontrada, verifique se você escreveu corretamente";
       document.getElementById("imageReceita").src = "./images/vovo_confusa.png";
       document.getElementById("localReceita").innerHTML = "Local Inexistente";
       document.getElementById("dificuldadeReceita").innerHTML =
