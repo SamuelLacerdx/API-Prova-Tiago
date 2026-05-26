@@ -57,7 +57,8 @@ async function buscarReceita() {
 
     //ERRO de não encontrado
   } catch (error) {
-    ("Receita não encontrada, verifique se você escreveu corretamente");
+    document.getElementById("nomeReceita").innerText =
+      "Receita não encontrada, verifique se você escreveu corretamente";
     document.getElementById("imageReceita").src = "./images/vovo_confusa.png";
     document.getElementById("localReceita").innerHTML = "Local Inexistente";
     document.getElementById("dificuldadeReceita").innerHTML =
