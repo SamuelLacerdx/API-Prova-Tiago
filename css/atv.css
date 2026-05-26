@@ -126,9 +126,43 @@ section {
   background-color: transparent;
   cursor: pointer;
   letter-spacing: 0.05em;
-  transition: background-color 0.2s;
 }
 
 #btn > button:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  header > h1 {
+    padding: 0px;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  main > img {
+    width: 70dvw;
+    height: 40dvh;
+    margin: 20px auto;
+    justify-content: center;
+  }
+
+  #btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+  }
 }
