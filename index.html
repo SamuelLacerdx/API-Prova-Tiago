@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/atv.css" />
-    <link rel="shortcut icon" href="./images/ico.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/ico.png" type="image/x-icon" />
     <script src="./js/script.js" defer></script>
     <title>Receitas</title>
   </head>
@@ -12,7 +12,12 @@
     <header>
       <h1>Receitas da Vovó API</h1>
       <div class="busca">
-        <input type="text" placeholder="Buscar receita..." id="idReceita" />
+        <input
+          type="text"
+          placeholder="Buscar receita..."
+          id="idReceita"
+          onkeydown="if (event.key === 'Enter') buscarReceita();"
+        />
         <button onclick="buscarReceita()">Buscar</button>
       </div>
     </header>
