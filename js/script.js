@@ -7,6 +7,16 @@ async function buscarReceita() {
     .value.trim()
     .replace(/\s+/g, " ");
 
+  // Caso usuario não coloque ID nem Texto
+  if (!idDigitado) {
+    document.getElementById("nomeReceita").innerText =
+      "A vovó está brava! digite alguma coisa";
+    document.getElementById("imageReceita").src = "./images/vovo_brava.png";
+    document.getElementById("localReceita").innerHTML = "Local Inexistente";
+    document.getElementById("dificuldadeReceita").innerHTML = "Cuidado!!!";
+    document.getElementById("classificacaoReceita").innerHTML = "...";
+    return;
+  }
   // Verifica se oq foi
   const ehTexto = isNaN(idDigitado);
 
